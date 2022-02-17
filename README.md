@@ -1,7 +1,7 @@
 # Descriptive2algebraic-chess-notation-converter
 The script **translator.py** is designed to convert from descriptive notation that we can find in old chess books (Spanish's one at the moment) , to Standard Algebraic Notation (SAN).
 
-To solve the ambiguities, I use pychess python library to simulate the board and choose the right move.
+To solve the ambiguities, I use pychess python library to simulate the board and choose the right move. The simulation of the board is shown during the conversion to find mistakes.
 
 There is another script, called **batch_conversion.py** that can convert several files in a folder to SAN notation.
 
