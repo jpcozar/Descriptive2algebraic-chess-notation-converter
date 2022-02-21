@@ -365,13 +365,13 @@ def converter(move,whiteT):
       
 
     else:
-        print("There is ambiguity")
+        print("There is col ambiguity")
         colA=Desc2AlgCol(columnmove[0]) # A option 
         colB=Desc2AlgCol(columnmove[1]) # B opcton 
         
         if (piece!="P"):
-            print("A Option: " + piece+colA+row)
-            print("B Option: " + piece+colB+row)
+            print("A Option: " + EnglishPiece+colA+row)
+            print("B Option: " + EnglishPiece+colB+row)
         else: 
             print("A Option: " + colA+row)
             print("B Option: " + colB+row)
@@ -379,45 +379,51 @@ def converter(move,whiteT):
         # Trying a illegal move give an exception. We catch it to get the right one.
         try:
             if (piece!="P"):
-                board.push_san(EnglishPiece+colA+row)
+                board.push_san(EnglishPiece+colA+row)       
             else:
                 board.push_san(colA+row)
+            col=colA
+
         except Exception:
             print("A Option is ilegal!")
             if (piece !="P"):
-                print("Legal Move: " + piece+colB+row)
+                print("Legal Move: " + EnglishPiece+colB+row)
             else:
                 print("Legal Move: " + colB+row)
             
             col=colB
 
-        try:
-            if (piece!="P"):
-                board.push_san(EnglishPiece+colB+row)
-            else:
-                board.push_san(colB+row)
-        except Exception:        
-            print("B Option is illegal!")
-            if(piece!="P"):
-                print("Legal Move: " + piece+colA+row)
-            else:
-                print("Legal Move: " + colA+row)
-            
-            col=colA
+            try:
+                if (piece!="P"):
+                    board.push_san(EnglishPiece+colB+row)
+                    
+                else:
+                    board.push_san(colB+row)
+                col=colB
+            except Exception:        
+                print("B Option is illegal!")
+                if(piece!="P"):
+                    print("Legal Move: " + EnglishPiece+colA+row)
+                else:
+                    print("Legal Move: " + colA+row)
+                
+                col=colA
         board.pop() #undo last move that we did to get the rigth one
 
     # We print the move we are going to do
-    print(piece+col+row)
+    print(EnglishPiece+col+row)
     
-    if (piece=='P'): # If a pawn is moved piece name isn't included
+    if (EnglishPiece=='P'): # If a pawn is moved piece name isn't included
         board.push_san(col+row)      
     else:
         board.push_san(EnglishPiece+col+row)
 
-    if (piece != "P"):
+    if (EnglishPiece != "P"):
         return(EnglishPiece+col+row)  
     else:
         return(col+row)
+
+
 
 
 def create_pgn_file_head(archivoAlg):
