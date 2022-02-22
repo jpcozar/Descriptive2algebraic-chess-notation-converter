@@ -333,7 +333,7 @@ def converter(move,whiteT):
         # if it is white turn, row is ok in descriptive notation
     if (not whiteT):
         # if it is black turn, row in descriptive is 9-row    
-        row=str(9-int(move[1]))
+        row=str(9-int(row))
 
 
  #There's no ambiguity, we know right column
